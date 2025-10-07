@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EarnMasters Pro - Premium Earning Platform</title>
+    <style>
+        :root {
+            --pink: #e91e63;
+            --red: #f44336;
+            --blue: #2196f3;
+            --green: #4caf50;
+            --gold: #ffd700;
+            --white: #ffffff;
+            --light-bg: #f5f5f5;
+            --dark: #333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-bg);
+            color: #333;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--pink), var(--blue));
+            color: var(--white);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--gold);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .admin-btn {
+            background: var(--red);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .admin-btn:hover {
+            background: var(--gold);
+            color: var(--dark);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(233, 30, 99, 0.9), rgba(33, 150, 243, 0.9)), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            text-align: center;
+            padding: 8rem 2rem 5rem;
+            margin-top: 60px;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            background-color: var(--gold);
+            color: var(--dark);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: var(--green);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Pricing Section */
+        .pricing {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .pricing h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+        
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .pricing-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 2px solid transparent;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, var(--pink), var(--blue));
+        }
+        
+        .pricing-card.featured {
+            border-color: var(--gold);
+            transform: scale(1.05);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .price {
+            font-size: 2.5rem;
+            color: var(--blue);
+            margin: 1rem 0;
+            font-weight: bold;
+        }
+
+        .plan-badge {
+            background: var(--gold);
+            color: var(--dark);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        
+        .subscribe-btn {
+            background: linear-gradient(135deg, var(--pink), var(--blue));
+            color: var(--white);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+            margin-top: 1rem;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .subscribe-btn:hover {
+            background: linear-gradient(135deg, var(--blue), var(--pink));
+            transform: translateY(-2px);
+        }
+        
+        /* Payment Section */
+        .payment-section {
+            background-color: var(--white);
+            padding: 3rem 2rem;
+            margin: 2rem auto;
+            max-width: 500px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .easypaisa-info {
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--blue);
+        }
+        
+        .phone-number {
+            font-size: 1.5rem;
+            color: var(--pink);
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        /* Admin Panel Styles */
+        .admin-panel {
+            display: none;
+            background: var(--white);
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 1200px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--light-bg);
+        }
+
+        .admin-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .admin-tab {
+            padding: 1rem 2rem;
+            background: var(--light-bg);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .admin-tab.active {
+            background: var(--blue);
+            color: var(--white);
+        }
+
+        .admin-tab:hover {
+            background: var(--pink);
+            color: var(--white);
+        }
+
+        .admin-content {
+            display: none;
+        }
+
+        .admin-content.active {
+            display: block;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--light-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--blue);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background: var(--light-bg);
+            font-weight: bold;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 0.2rem;
+            transition: 0.3s;
+        }
+
+        .btn-edit {
+            background: var(--blue);
+            color: white;
+        }
+
+        .btn-delete {
+            background: var(--red);
+            color: white;
+        }
+
+        .btn-toggle {
+            background: var(--pink);
+            color: white;
+        }
+
+        .btn-add {
+            background: var(--green);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .login-form {
+            max-width: 400px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        /* Content Management */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .content-card {
+            background: var(--light-bg);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .pricing-card.featured {
+                transform: none;
+            }
+
+            .admin-tabs {
+                flex-direction: column;
+            }
+
+            .form-row {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">EarnMasters Pro 💰</div>
+            <nav class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#features">Features</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+                <a href="#" class="admin-btn" onclick="showAdminLogin()">Admin Login</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>Earn Like A Master! 💸</h1>
+        <p>Join Pakistan's #1 Earning Platform. Complete simple tasks, surveys, and watch videos to earn real money daily!</p>
+        <a href="#pricing" class="cta-button">Start Earning Now 🚀</a>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <h2>Why Choose EarnMasters Pro?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <h3>Daily Earnings</h3>
+                <p>Earn money every day by completing simple tasks and surveys</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3>Mobile Friendly</h3>
+                <p>Work from anywhere using your smartphone or computer</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🚀</div>
+                <h3>Instant Withdrawal</h3>
+                <p>Get your earnings instantly through EasyPaisa/JazzCash</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">👥</div>
+                <h3>Referral Bonus</h3>
+                <p>Earn extra money by referring your friends and family</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <h2>Choose Your Master Plan 🎯</h2>
+        <div class="pricing-cards">
+            <!-- 10 Plans from Rs. 10 to Rs. 10,00,000 -->
+            <div class="pricing-card">
+                <div class="plan-badge">BEGINNER</div>
+                <h3>Starter Pack</h3>
+                <div class="price">Rs. 10<span>/month</span></div>
+                <ul style="text-align: left; margin: 1rem 0;">
+                    <li>Basic Surveys Access</li>
+                    <li>5 Tasks Daily</li>
+                    <li>Email Support</li>
+                    <li>Referral: 10%</li>
+                </ul>
+                <button class="subscribe-btn" onclick="showPayment('Starter Pack', 10)">Subscribe Now</button>
+            </div>
+            
+            <div class="pricing-card">
+                <div class="plan-badge">POPULAR</div>
+                <h3>Silver Plan</h3>
+                <div class="price">Rs. 50<span>/month</span></div>
+                <ul style="text-align: left; margin: 1rem 0;">
+                    <li>All Surveys + Videos</li>
+                    <li>20 Tasks Daily</li>
+                    <li>Priority Support</li>
+                    <li>Referral: 15%</li>
+                </ul>
+                <button class="subscribe-btn" onclick="showPayment('Silver Plan', 50)">Subscribe Now</button>
+            </div>
+            
+            <div class="pricing-card featured">
+                <div class="plan-badge" style="background: var(--gold);">BEST VALUE</div>
+                <h3>Gold Master</h3>
+                <div class="price">Rs. 500<span>/month</span></div>
+                <ul style="text-align: left; margin: 1rem 0;">
+                    <li>VIP Surveys + Content</li>
+                    <li>Unlimited Tasks</li>
+                    <li>24/7 Support</li>
+                    <li>Referral: 20%</li>
+                    <li>Bonus Earnings</li>
+                </ul>
+                <button class="subscribe-btn" onclick="showPayment('Gold Master', 500)">Become A Master</button>
+            </div>
+
+            <div class="pricing-card">
+                <div class="plan-badge">PREMIUM</div>
+                <h3>Platinum Pro</h3>
+                <div class="price">Rs. 1,000<span>/month</span></div>
+                <ul style="text-align: left; margin: 1rem 0;">
+                    <li>All Features Unlocked</li>
+                    <li>Exclusive Content</li>
+                    <li>Personal Manager</li>
+                    <li>Referral: 25%</li>
+                </ul>
+                <button class="subscribe-btn" onclick="showPayment('Platinum Pro', 1000)">Go Premium</button>
+            </div>
+
+            <div class="pricing-card">
+                <div class="plan-badge">ELITE</div>
+                <h3>Diamond Elite</h3>
+                <div class="price">Rs. 5,000<span>/month</span></div>
+                <ul style="text-align: left; margin: 1rem 0;">
+                    <li>Elite Status</li>
+                    <li>Highest Paying Tasks</li>
+                    <li>Dedicated Support</li>
+                    <li>Referral: 30%</li>
+                </ul>
+                <button class="subscribe-btn" onclick="showPayment('Diamond Elite', 5000)">Join Elite</button>
+            </div>
+
+            <div class="pricing-card">
+                <div class="plan-badge">ULTIMATE</div>
+                <h3>Millionaire Club</h3>
+                <div class="price">Rs. 10,000<span>/month</span></div>
+                <ul style="text-align: left; margin: 1rem 0;">
+                    <li>Millionaire Network</li>
+                    <li>Business Opportunities</li>
+                    <li>VIP Treatment</li>
+                    <li>Referral: 50%</li>
+                </ul>
+                <button class="subscribe-btn" onclick="showPayment('Millionaire Club', 10000)">Join Club</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Section -->
+    <section class="payment-section" id="paymentSection" style="display: none;">
+        <h2>Complete Your Subscription 🎉</h2>
+        <p>You've selected: <strong id="selectedPlan">Starter Plan</strong></p>
+        <p>Amount: <strong id="planAmount">Rs. 10</strong></p>
+        
+        <div class="easypaisa-info">
+            <h3>💰 EasyPaisa Payment</h3>
+            <p>Send payment to this number:</p>
+            <div class="phone-number">0314-5447657</div>
+            <p><strong>After payment, WhatsApp your transaction ID to: 03145447657</strong></p>
+            <p>You will receive your User ID and password within 1 hour!</p>
+        </div>
+        
+        <button class="subscribe-btn" onclick="completePayment()">I've Made Payment ✅</button>
+        <button class="subscribe-btn" style="background-color: #666; margin-top: 0.5rem;" onclick="hidePayment()">Cancel</button>
+    </section>
+
+    <!-- Admin Login Form -->
+    <section class="login-form" id="adminLoginForm" style="display: none;">
+        <h2>Admin Login 🔐</h2>
+        <div class="form-group">
+            <label>Username:</label>
+            <input type="text" id="adminUsername" placeholder="Enter username">
+        </div>
+        <div class="form-group">
+            <label>Password:</label>
+            <input type="password" id="adminPassword" placeholder="Enter password">
+        </div>
+        <button class="subscribe-btn" onclick="loginAdmin()">Login to Dashboard</button>
+        <button class="subscribe-btn" style="background-color: #666; margin-top: 0.5rem;" onclick="hideAdminLogin()">Cancel</button>
+    </section>
+
+    <!-- Admin Panel -->
+    <section class="admin-panel" id="adminPanel">
+        <div class="admin-header">
+            <h2>🎯 EarnMasters Pro - Admin Dashboard</h2>
+            <button class="btn btn-delete" onclick="logoutAdmin()">Logout</button>
+        </div>
+
+        <div class="admin-tabs">
+            <button class="admin-tab active" onclick="showTab('dashboard')">📊 Dashboard</button>
+            <button class="admin-tab" onclick="showTab('subscribers')">👥 Subscribers</button>
+            <button class="admin-tab" onclick="showTab('payments')">💰 Payments</button>
+            <button class="admin-tab" onclick="showTab('surveys')">📝 Surveys</button>
+            <button class="admin-tab" onclick="showTab('content')">📚 Content</button>
+            <button class="admin-tab" onclick="showTab('videos')">🎥 Videos</button>
+            <button class="admin-tab" onclick="showTab('settings')">⚙️ Settings</button>
+        </div>
+
+        <!-- Dashboard Tab -->
+        <div class="admin-content active" id="dashboard">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalSubscribers">0</div>
+                    <div>Total Subscribers</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="totalRevenue">Rs. 0</div>
+                    <div>Total Revenue</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="activeSubscribers">0</div>
+                    <div>Active Subscribers</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="pendingPayments">0</div>
+                    <div>Pending Payments</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subscribers Tab -->
+        <div class="admin-content" id="subscribers">
+            <button class="btn btn-add" onclick="showAddSubscriberForm()">+ Add New Subscriber</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>User ID</th>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Plan</th>
+                        <th>Status</th>
+                        <th>Join Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="subscribersTable">
+                    <!-- Subscribers will be added here dynamically -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Payments Tab -->
+        <div class="admin-content" id="payments">
+            <h3>Payment History</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Txn ID</th>
+                        <th>User ID</th>
+                        <th>Plan</th>
+                        <th>Amount</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="paymentsTable">
+                    <!-- Payments will be added here dynamically -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Surveys Tab -->
+        <div class="admin-content" id="surveys">
+            <button class="btn btn-add" onclick="showAddSurveyForm()">+ Create New Survey</button>
+            <div class="content-grid" id="surveysGrid">
+                <!-- Surveys will be added here -->
+            </div>
+        </div>
+
+        <!-- Content Tab -->
+        <div class="admin-content" id="content">
+            <button class="btn btn-add" onclick="showAddContentForm()">+ Add New Content</button>
+            <div class="content-grid" id="contentGrid">
+                <!-- Content will be added here -->
+            </div>
+        </div>
+
+        <!-- Videos Tab -->
+        <div class="admin-content" id="videos">
+            <button class="btn btn-add" onclick="showAddVideoForm()">+ Add New Video</button>
+            <div class="content-grid" id="videosGrid">
+                <!-- Videos will be added here -->
+            </div>
+        </div>
+
+        <!-- Settings Tab -->
+        <div class="admin-content" id="settings">
+            <h3>Website Settings</h3>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>EasyPaisa Number:</label>
+                    <input type="text" id="easypaisaNumber" value="03145447657" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>WhatsApp Number:</label>
+                    <input type="text" id="whatsappNumber" value="03145447657" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Support Email:</label>
+                <input type="email" id="supportEmail" value="support@earnmasters.com" class="form-control">
+            </div>
+            <button class="subscribe-btn" onclick="saveSettings()">💾 Save Settings</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 EarnMasters Pro. All rights reserved.</p>
+        <p>Contact: 0314-5447657 | WhatsApp Available | 24/7 Support</p>
+    </footer>
+
+    <script>
+        // Complete data storage system
+        let subscribers = JSON.parse(localStorage.getItem('subscribers')) || [];
+        let payments = JSON.parse(localStorage.getItem('payments')) || [];
+        let surveys = JSON.parse(localStorage.getItem('surveys')) || [];
+        let content = JSON.parse(localStorage.getItem('content')) || [];
+        let videos = JSON.parse(localStorage.getItem('videos')) || [];
+        let settings = JSON.parse(localStorage.getItem('settings')) || {
+            easypaisaNumber: '03145447657',
+            whatsappNumber: '03145447657',
+            supportEmail: 'support@earnmasters.com'
+        };
+
+        // Admin credentials
+        const ADMIN_USERNAME = 'admin';
+        const ADMIN_PASSWORD = 'admin123';
+
+        // Generate unique user ID from transaction
+        function generateUserID(transactionID) {
+            return 'EM' + transactionID.slice(-6) + Math.floor(100 + Math.random() * 900);
+        }
+
+        function showPayment(plan, amount) {
+            document.getElementById('selectedPlan').textContent = plan;
+            document.getElementById('planAmount').textContent = 'Rs. ' + amount;
+            document.getElementById('paymentSection').style.display = 'block';
+            window.location.href = '#paymentSection';
+        }
+        
+        function hidePayment() {
+            document.getElementById('paymentSection').style.display = 'none';
+        }
+        
+        function completePayment() {
+            const plan = document.getElementById('selectedPlan').textContent;
+            const amount = document.getElementById('planAmount').textContent.replace('Rs. ', '');
+            const transactionID = 'TXN' + Date.now();
+            const userID = generateUserID(transactionID);
+            
+            // Add to payments
+            const payment = {
+                id: transactionID,
+                userID: userID,
+                plan: plan,
+                amount: parseInt(amount),
+                date: new Date().toLocaleDateString(),
+                status: 'Completed',
+                phone: '03145447657'
+            };
+            payments.push(payment);
+            localStorage.setItem('payments', JSON.stringify(payments));
+            
+            // Add new subscriber
+            const subscriber = {
+                id: userID,
+                name: 'New User',
+                phone: '03145447657',
+                plan: plan,
+                status: 'Active',
+                joinDate: new Date().toLocaleDateString(),
+                password: 'pass' + Math.floor(1000 + Math.random() * 9000),
+                visible: true
+            };
+            subscribers.push(subscriber);
+            localStorage.setItem('subscribers', JSON.stringify(subscribers));
+            
+            alert('✅ Payment Recorded! User ID: ' + userID + '\nPassword: ' + subscriber.password + '\n\nShare these credentials with the user!');
+            hidePayment();
+            updateAdminDashboard();
+        }
+
+        function showAdminLogin() {
+            document.getElementById('adminLoginForm').style.display = 'block';
+        }
+
+        function hideAdminLogin() {
+            document.getElementById('adminLoginForm').style.display = 'none';
+        }
+
+        function loginAdmin() {
+            const username = document.getElementById('adminUsername').value;
+            const password = document.getElementById('adminPassword').value;
+            
+            if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+                document.getElementById('adminLoginForm').style.display = 'none';
+                document.getElementById('adminPanel').style.display = 'block';
+                updateAdminDashboard();
+                loadSettings();
+            } else {
+                alert('❌ Invalid credentials! Use: admin/admin123');
+            }
+        }
+
+        function logoutAdmin() {
+            document.getElementById('adminPanel').style.display = 'none';
+            document.getElementById('adminUsername').value = '';
+            document.getElementById('adminPassword').value = '';
+        }
+
+        function showTab(tabName) {
+            document.querySelectorAll('.admin-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.admin-tab').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function updateAdminDashboard() {
+            // Update stats
+            document.getElementById('totalSubscribers').textContent = subscribers.length;
+            document.getElementById('totalRevenue').textContent = 'Rs. ' + payments.reduce((sum, payment) => sum + payment.amount, 0);
+            document.getElementById('activeSubscribers').textContent = subscribers.filter(sub => sub.status === 'Active').length;
+            document.getElementById('pendingPayments').textContent = payments.filter(p => p.status === 'Pending').length;
+            
+            // Update subscribers table
+            const subscribersTable = document.getElementById('subscribersTable');
+            subscribersTable.innerHTML = subscribers.map(sub => `
+                <tr>
+                    <td><strong>${sub.id}</strong></td>
+                    <td>${sub.name}</td>
+                    <td>${sub.phone}</td>
+                    <td>${sub.plan}</td>
+                    <td>${sub.status}</td>
+                    <td>${sub.joinDate}</td>
+                    <td>
+                        <button class="btn btn-toggle" onclick="toggleSubscriber('${sub.id}')">
+                            ${sub.visible ? '👁️ Hide' : '👁️ Show'}
+                        </button>
+                        <button class="btn btn-delete" onclick="deleteSubscriber('${sub.id}')">🗑️ Delete</button>
+                    </td>
+                </tr>
+            `).join('');
+            
+            // Update payments table
+            const paymentsTable = document.getElementById('paymentsTable');
+            paymentsTable.innerHTML = payments.map(payment => `
+                <tr>
+                    <td>${payment.id}</td>
+                    <td>${payment.userID}</td>
+                    <td>${payment.plan}</td>
+                    <td>Rs. ${payment.amount}</td>
+                    <td>${payment.date}</td>
+                    <td>${payment.status}</td>
+                </tr>
+            `).join('');
+
+            // Update surveys
+            updateSurveysGrid();
+            updateContentGrid();
+            updateVideosGrid();
+        }
+
+        function toggleSubscriber(id) {
+            const subscriber = subscribers.find(sub => sub.id === id);
+            if (subscriber) {
+                subscriber.visible = !subscriber.visible;
+                localStorage.setItem('subscribers', JSON.stringify(subscribers));
+                updateAdminDashboard();
+            }
+        }
+
+        function deleteSubscriber(id) {
+            if (confirm('Are you sure you want to delete this subscriber?')) {
+                subscribers = subscribers.filter(sub => sub.id !== id);
+                localStorage.setItem('subscribers', JSON.stringify(subscribers));
+                updateAdminDashboard();
+            }
+        }
+
+        function showAddSubscriberForm() {
+            const name = prompt('Enter subscriber name:');
+            const phone = prompt('Enter phone number:');
+            const plan = prompt('Enter plan (Starter Pack/Silver Plan/etc):');
+            
+            if (name && phone && plan) {
+                const userID = generateUserID('MANUAL' + Date.now());
+                const newSubscriber = {
+                    id: userID,
+                    name: name,
+                    phone: phone,
+                    plan: plan,
+                    status: 'Active',
+                    joinDate: new Date().toLocaleDateString(),
+                    password: 'pass' + Math.floor(1000 + Math.random() * 9000),
+                    visible: true
+                };
+                
+                subscribers.push(newSubscriber);
+                localStorage.setItem('subscribers', JSON.stringify(subscribers));
+                alert('✅ Subscriber added!\nUser ID: ' + userID + '\nPassword: ' + newSubscriber.password);
+                updateAdminDashboard();
+            }
+        }
+
+        function showAddSurveyForm() {
+            const title = prompt('Enter survey title:');
+            const questions = prompt('Enter number of questions:');
+            
+            if (title && questions) {
+                const newSurvey = {
+                    id: 'SUR' + Date.now(),
+                    title: title,
+                    questions: questions,
+                    created: new Date().toLocaleDateString(),
+                    status: 'Active'
+                };
+                
+                surveys.push(newSurvey);
+                localStorage.setItem('surveys', JSON.stringify(surveys));
+                updateAdminDashboard();
+            }
+        }
+
+        function showAddContentForm() {
+            const title = prompt('Enter content title:');
+            const type = prompt('Enter type (Story/Article/News):');
+            
+            if (title && type) {
+                const newContent = {
+                    id: 'CON' + Date.now(),
+                    title: title,
+                    type: type,
+                    created: new Date().toLocaleDateString(),
+                    status: 'Active'
+                };
+                
+                content.push(newContent);
+                localStorage.setItem('content', JSON.stringify(content));
+                updateAdminDashboard();
+            }
+        }
+
+        function showAddVideoForm() {
+            const title = prompt('Enter video title:');
+            const url = prompt('Enter video URL:');
+            
+            if (title && url) {
+                const newVideo = {
+                    id: 'VID' + Date.now(),
+                    title: title,
+                    url: url,
+                    created: new Date().toLocaleDateString(),
+                    status: 'Active'
+                };
+                
+                videos.push(newVideo);
+                localStorage.setItem('videos', JSON.stringify(videos));
+                updateAdminDashboard();
+            }
+        }
+
+        function updateSurveysGrid() {
+            const surveysGrid = document.getElementById('surveysGrid');
+            surveysGrid.innerHTML = surveys.map(survey => `
+                <div class="content-card">
+                    <h4>${survey.title}</h4>
+                    <p>Questions: ${survey.questions} | Created: ${survey.created}</p>
+                    <button class="btn btn-edit">Edit</button>
+                    <button class="btn btn-delete" onclick="deleteItem('surveys', '${survey.id}')">Delete</button>
+                </div>
+            `).join('');
+        }
+
+        function updateContentGrid() {
+            const contentGrid = document.getElementById('contentGrid');
+            contentGrid.innerHTML = content.map(item => `
+                <div class="content-card">
+                    <h4>${item.title}</h4>
+                    <p>Type: ${item.type} | Created: ${item.created}</p>
+                    <button class="btn btn-edit">Edit</button>
+                    <button class="btn btn-delete" onclick="deleteItem('content', '${item.id}')">Delete</button>
+                </div>
+            `).join('');
+        }
+
+        function updateVideosGrid() {
+            const videosGrid = document.getElementById('videosGrid');
+            videosGrid.innerHTML = videos.map(video => `
+                <div class="content-card">
+                    <h4>${video.title}</h4>
+                    <p>URL: ${video.url} | Created: ${video.created}</p>
+                    <button class="btn btn-edit">Edit</button>
+                    <button class="btn btn-delete" onclick="deleteItem('videos', '${video.id}')">Delete</button>
+                </div>
+            `).join('');
+        }
+
+        function deleteItem(type, id) {
+            if (confirm('Are you sure you want to delete this item?')) {
+                if (type === 'surveys') {
+                    surveys = surveys.filter(item => item.id !== id);
+                    localStorage.setItem('surveys', JSON.stringify(surveys));
+                } else if (type === 'content') {
+                    content = content.filter(item => item.id !== id);
+                    localStorage.setItem('content', JSON.stringify(content));
+                } else if (type === 'videos') {
+                    videos = videos.filter(item => item.id !== id);
+                    localStorage.setItem('videos', JSON.stringify(videos));
+                }
+                updateAdminDashboard();
+            }
+        }
+
+        function loadSettings() {
+            document.getElementById('easypaisaNumber').value = settings.easypaisaNumber;
+            document.getElementById('whatsappNumber').value = settings.whatsappNumber;
+            document.getElementById('supportEmail').value = settings.supportEmail;
+        }
+
+        function saveSettings() {
+            settings.easypaisaNumber = document.getElementById('easypaisaNumber').value;
+            settings.whatsappNumber = document.getElementById('whatsappNumber').value;
+            settings.supportEmail = document.getElementById('supportEmail').value;
+            
+            localStorage.setItem('settings', JSON.stringify(settings));
+            alert('✅ Settings saved successfully!');
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
